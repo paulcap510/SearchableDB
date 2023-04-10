@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Search{% endblock %}
+
+{% block content %}
+<div class="text-center">
+<h2>Search Content</h2>
+<form method="get" action="{{ url_for('views.search') }}"><br>
+    <input type="text" name="search" id="search" required><br><br>
+    <input type="submit" value="Search"><br>
+</form>
+<br>
+<h2>Results</h2>
+<div class="row justify-content-center">
+    <div class="col-auto">
+
+    <table class="table table-responsive">
+    <tr>
+        <th>First</th>
+        <th>Last</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th>Category</th>
+    </tr>
+    {% for member in members %}
+    <tr>
+        <td>{{ member.member_first }}</td>
+        <td>{{ member.member_last }}</td>
+        <td>{{ member.member_email }}</td>
+        <td>{{ member.member_address }}</td>
+        <td>{{ member.category }}</td>
+
+    </tr>
+    {% endfor %}
+</table>
+    </div>
+
+</div>
+</div>
+{% endblock %}
